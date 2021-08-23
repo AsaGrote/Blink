@@ -19,7 +19,7 @@ module loss_dec(
     output logic lose = 0
     );
     
-    always_ff @ (posedge clk, posedge reset)
+    always_ff @ (posedge clk, posedge reset, posedge enable, negedge enable)
      begin
         if (reset) begin
             Q <= 0;
@@ -30,10 +30,17 @@ module loss_dec(
                 Q <= 0;
                 lose <= 1;
             end
+         else if (enable) begin
+            if (D <= 1) begin
+            Q <= 1;
+            lose <= 0;
+            end
+            
             else begin
                 Q <= D;
                 lose <= 0;
             end
         end
+    end
     end
 endmodule
