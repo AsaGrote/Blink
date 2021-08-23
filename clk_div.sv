@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Engineer: Asa Grote
+// Engineer: Jonathan Zoccola
 // 
 // Create Date: 08/20/2021 10:11:08 PM
 // Module Name: clk_div
