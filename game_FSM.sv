@@ -31,7 +31,7 @@ module game_FSM(
     parameter [2:0] PLAY = 2'b00, LOSE = 2'b01, WIN = 2'b10;
     
     //sequential logic to change states
-    always_ff @ (posedge clk)
+    always_ff @ (posedge clk, posedge reset)
     begin
         if (reset) PS = PLAY;
         else PS = NS;

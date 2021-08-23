@@ -29,9 +29,9 @@ module led_FSM(
     parameter [4:0] START = 4'b0000, ST1 = 4'b0001, ST2= 4'b0010, ST3 = 4'b0011, ST4 = 4'b0100, ST5 = 4'b0101, ST6 = 4'b0110, ST7 = 4'b0111, ST8 = 4'b1000, ST9 = 4'b1001, ST10 = 4'b1010, ST11 = 4'b1011, ST12 = 4'b1100, ST13 = 4'b1101, ST14 = 4'b1110, ST15 = 4'b1111;
    
     //sequential logic to change states
-    always_ff @ (posedge clk)
+    always_ff @ (posedge clk, posedge reset) //By having our reset in the parenthesis we can make it async since it can be evaluated at any time
     begin
-        if (reset) PS = START;
+        if (reset) PS = START; //Positive edge reset (async)
         else PS = NS;
     end
    

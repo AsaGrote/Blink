@@ -11,17 +11,20 @@
 
 
 module accumulator(
-    input clk, LD, CLR,
+    input clk, CLR, LD,
     input [3:0] D,
     output logic [3:0] Q = 0
     );
    
-    always_ff @ (posedge clk)
+    always_ff @ (posedge clk, posedge CLR)
     begin
-        if (CLR)
+        if (CLR) begin
             Q <= 0;
+            end
         else if (LD)
+         begin
             Q <= D + Q;
+         end
          
    
     end

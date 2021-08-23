@@ -19,13 +19,14 @@ module loss_dec(
     output logic lose = 0
     );
     
-    always_ff @ (posedge clk, negedge reset) begin
+    always_ff @ (posedge clk, posedge reset)
+     begin
         if (reset) begin
             Q <= 0;
             lose <= 0;
         end
         else if (enable) begin
-            if (D == 0) begin
+            if (D <= 0) begin
                 Q <= 0;
                 lose <= 1;
             end

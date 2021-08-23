@@ -19,8 +19,8 @@ module clk_div (
     integer MAXCOUNT = (11 - score) * 3000000;
     always_ff @ (posedge clk)
     begin
-        count = count + 1;
-        if (count == MAXCOUNT)
+        count = count + 2;
+        if (count >= MAXCOUNT)
         begin
             count = 0;
             sclk = ~ sclk;
